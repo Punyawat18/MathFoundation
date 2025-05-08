@@ -1,7 +1,9 @@
-def f(x):
-    return x**2 - 2
+import math
 
-interval = [0, 2]
+def f(x):
+    return x - 2
+
+interval = [0, 10]
 precision = 0.000001
 
 def bisection(interval, precision):
@@ -13,15 +15,16 @@ def bisection(interval, precision):
         print(f'Exact root found at a: {a}')
     elif f(b) == 0:
         print(f'Exact root found at b: {b}')
-    while abs(b - a) > precision:
-        c = (a + b) / 2
-        if f(a) * f(c) < 0:
-            b = c
-        else:
-            a = c
-        iterations += 1
-        print(f'Iteration[{iterations}] : [{a}, {b}]')
-    print(f'Final Iteration[{iterations}] : [{a}, {b}]')
-    print(f'Final Approximation : {c}, Value of Function : {f(c)}')
+    else:
+        while abs(b - a) > precision:
+            c = (a + b) / 2
+            if f(a) * f(c) < 0:
+                b = c
+            else:
+                a = c
+            iterations += 1
+            print(f'Iteration[{iterations}] : [{a}, {b}]')
+        print(f'Final Iteration[{iterations}] : [{a}, {b}]')
+        print(f'Final Approximation : {c}, Value of Function : {f(c)}')
 
 bisection(interval, precision)
